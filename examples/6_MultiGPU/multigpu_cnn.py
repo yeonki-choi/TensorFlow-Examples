@@ -26,7 +26,7 @@ mnist = input_data.read_data_sets("/tmp/data/", one_hot=True)
 num_gpus = 2
 num_steps = 200
 learning_rate = 0.001
-batch_size = 1024
+batch_size = 512
 display_step = 10
 
 # Network Parameters
