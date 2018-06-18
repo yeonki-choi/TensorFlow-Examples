@@ -59,11 +59,12 @@ with tf.device('/cpu:0'):
   sum = tf.add_n(c1) #Addition of all elements in c1, i.e. A^n + B^n
 
 t1_1 = datetime.datetime.now()
-with tf.Session(config=tf.ConfigProto(log_device_placement=log_device_placement)) as sess:
+with tf.Session(config=tf.ConfigProto(allow_soft_placement=True, log_device_placement=True)) as sess:
     # Run the op.
     sess.run(sum, {a:A, b:B})
 t2_1 = datetime.datetime.now()
 
+print("Completed Single GPU computation: " + str(t2_1-t1_1))
 
 '''
 Multi GPU computing
@@ -84,7 +85,7 @@ with tf.device('/cpu:0'):
   sum = tf.add_n(c2) #Addition of all elements in c2, i.e. A^n + B^n
 
 t1_2 = datetime.datetime.now()
-with tf.Session(config=tf.ConfigProto(log_device_placement=log_device_placement)) as sess:
+with tf.Session(config=tf.ConfigProto(allow_soft_placement=True, log_device_placement=True)) as sess:
     # Run the op.
     sess.run(sum, {a:A, b:B})
 t2_2 = datetime.datetime.now()
